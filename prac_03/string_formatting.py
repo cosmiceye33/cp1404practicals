@@ -38,10 +38,8 @@ print(f"{year} {name} for about {cost:,.0f}!")
 
 # TODO: Using a for loop with the range function and string formatting,
 # produce the following right-aligned output (DO NOT use a list):
-total = 0
-for i in range(5):
-    print(f"{total:>3}")
-    total += 50
+for i in range(0, 151, 50):
+    print(f"{i:>3}")
 #   0
 #  50
 # 100
