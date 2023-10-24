@@ -6,6 +6,7 @@ Actual: 43
 
 
 def main():
+    """A program that prints an email from name."""
     name_to_email = {}
     email = input("Email: ")
     while email != "":
@@ -15,6 +16,7 @@ def main():
 
 
 def get_name_from_email(email, name_to_email):
+    """Gets a name from an email and checks if that is there name."""
     email = email.split("@")
     name = email[0].split(".")
     choice = input(f"Is your name {' '.join(name).title()}? (Y/n) ").lower()
