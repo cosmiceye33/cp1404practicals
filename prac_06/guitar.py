@@ -1,8 +1,7 @@
 """
 Guitar Program
-start: 5:10
-Estimated:
-Actual:
+Estimated:1h 30m
+Actual:1h 3m
 """
 CURRENT_YEAR = 2023
 VINTAGE_AGE = 50

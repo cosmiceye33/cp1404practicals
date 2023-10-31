@@ -1,4 +1,8 @@
-
+"""
+Guitar Program
+Estimated:1h 30m
+Actual:1h 3m
+"""
 
 from guitar import Guitar
 
