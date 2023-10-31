@@ -16,7 +16,9 @@ class Guitar:
     def __str__(self):
         """Returns a string of guitar"""
         return f"{self.name} {self.year} : {self.cost}"
-    def get_age(self,):
+
+    def get_age(self):
+
         """Get the age of a guitar"""
         return CURRENT_YEAR - self.year
 
