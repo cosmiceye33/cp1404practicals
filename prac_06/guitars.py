@@ -5,7 +5,6 @@ Actual:1h 3m
 """
 
 from guitar import Guitar
-from operator import itemgetter
 
 GREETING = "My Guitars!"
 
