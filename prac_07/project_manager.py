@@ -6,7 +6,8 @@ from project import Project
 import datetime
 
 FILENAME = "projects.txt"
-
+MENU = "- (L)oad projects \n- (S)ave projects \n- (D)isplay projects \n- (F)ilter projects by date \n- (A)dd new project " \
+       "\n- (U)pdate project \n- (Q)uit"
 projects = []
 
 
@@ -20,7 +21,8 @@ def main():
             parts[3] = float(parts[3])
             parts[4] = int(parts[4])
             projects.append(Project(parts[0], parts[1], parts[2], parts[3], parts[4]))
-    choice = input("Choice: ").lower()
+    print(MENU)
+    choice = input(">>> ").lower()
     while choice != "q":
         if choice == "l":
             projects.clear()
@@ -51,7 +53,6 @@ def main():
             incomplete_projects.sort()
             for project in incomplete_projects:
                 print(f" {project}")
-
         elif choice == "a":
             project_name = get_project_details("Name: ")
             date_string = get_project_details("Start Date (d/m/yyyy): ")
@@ -59,7 +60,31 @@ def main():
             cost = float(get_project_details("Cost estimate: $"))
             completion = int(get_project_details("Completion rate: "))
             projects.append(Project(project_name, date_string, priority, cost, completion))
-        choice = input("Choice: ").lower()
+        elif choice == "s":
+            filename = input("Filename: ")
+            with open(filename, 'w') as out_file:
+                for project in projects:
+                    print(project, file=out_file, end="\n")
+            print(f"Projects saved to {out_file}")
+        elif choice == "f":
+            date_string = input("Show projects that start after date (dd/mm/yyyy): ")  # e.g., "30/9/2022"
+            # watch date time video to only show project after entered date
+            date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+            print(f"That day is/was {date.strftime('%A')}")
+            print(date.strftime("%d/%m/%Y"))
+        elif choice == "u":
+            for i, project in enumerate(projects):
+                print(f"{i} {project}")
+            project_choice = int(input("Project choice: "))
+            print(projects[project_choice])
+            percentage = int(input("New percentage: "))
+            projects[project_choice][4] = percentage
+            priority = int(input("Priority: "))
+            projects[project_choice][2] = priority
+        else:
+            print("Invalid menu choice")
+        print(MENU)
+        choice = input(">>> ").lower()
 
 
 def get_project_details(display_string):
