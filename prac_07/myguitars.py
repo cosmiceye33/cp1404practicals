@@ -1,4 +1,3 @@
-
 from guitar import Guitar
 
 FILENAME = "guitars.csv"
@@ -12,4 +11,3 @@ with open(FILENAME, 'r') as in_file:
 guitars.sort()
 for guitar in guitars:
     print(f"{guitar.name}, {guitar.year}, {guitar.cost}")
-

@@ -10,9 +10,8 @@ FILENAME = "projects.txt"
 MENU = "- (L)oad projects \n- (S)ave projects \n- (D)isplay projects \n- (F)ilter projects by date \n- (A)dd new project " \
        "\n- (U)pdate project \n- (Q)uit"
 
-
 def main():
-    """Program to load and update projects"""
+    """Program to load and update projects."""
     projects = []
     load_projects()
     print(MENU)
@@ -60,10 +59,10 @@ def update_project_details(projects):
 def display_projects_by_date(projects):
     """Displays the projects after a entered date"""
     date_string = input("Show projects that start after date (dd/mm/yyyy): ")  # e.g., "30/9/2022"
-    date_string = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+    date_object = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
     for project in projects:
         date = datetime.datetime.strptime(project.start_date, "%d/%m/%Y").date()
-        if date > date_string:
+        if date > date_object:
             print(project)
 
 
