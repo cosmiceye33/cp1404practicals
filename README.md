@@ -10,7 +10,8 @@ I am 19 just got a job at Glencore and am really enjoying Programming 2
 ## Lessons learned
 
 - Capcase for class names
-- !!!Finish the other two!!!
+- Read over code and make it simpler for the computer while also being easier to read
+- Write all the code first then refactor into functions
 
 ## Links 
 
