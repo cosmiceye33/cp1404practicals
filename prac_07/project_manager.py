@@ -9,27 +9,27 @@ import datetime
 FILENAME = "projects.txt"
 MENU = "- (L)oad projects \n- (S)ave projects \n- (D)isplay projects \n- (F)ilter projects by date \n- (A)dd new project " \
        "\n- (U)pdate project \n- (Q)uit"
-projects = []
 
 
 def main():
     """Program to load and update projects"""
+    projects = []
     load_projects()
     print(MENU)
     choice = input(">>> ").lower()
     while choice != "q":
         if choice == "l":
-            load_new_projects()
+            load_new_projects(projects)
         elif choice == "d":
             display_projects()
         elif choice == "a":
-            add_new_project()
+            add_new_project(projects)
         elif choice == "s":
-            save_projects()
+            save_projects(projects)
         elif choice == "f":
-            display_projects_by_date()
+            display_projects_by_date(projects)
         elif choice == "u":
-            update_project_details()
+            update_project_details(projects)
         else:
             print("Invalid menu choice")
         print(MENU)
@@ -38,14 +38,14 @@ def main():
     save_ending_projects()
 
 
-def save_ending_projects():
+def save_ending_projects(projects):
     """Saves the projects"""
     with open(FILENAME, 'w') as out_file:
         for project in projects:
             print(project, file=out_file, end="\n")
 
 
-def update_project_details():
+def update_project_details(projects):
     """Updates a projects completion and priority"""
     for i, project in enumerate(projects):
         print(f"{i} {project}")
@@ -57,7 +57,7 @@ def update_project_details():
                                        projects[project_choice].cost_estimate, percentage)
 
 
-def display_projects_by_date():
+def display_projects_by_date(projects):
     """Displays the projects after a entered date"""
     date_string = input("Show projects that start after date (dd/mm/yyyy): ")  # e.g., "30/9/2022"
     date_string = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
@@ -67,7 +67,7 @@ def display_projects_by_date():
             print(project)
 
 
-def save_projects():
+def save_projects(projects):
     """Save the current projects to a file"""
     filename = input("Filename: ")
     with open(filename, 'w') as out_file:
@@ -76,7 +76,7 @@ def save_projects():
     print(f"Projects saved to {out_file}")
 
 
-def add_new_project():
+def add_new_project(projects):
     """Adds new projects to the list"""
     project_name = get_project_details("Name: ")
     date_string = get_project_details("Start Date (d/m/yyyy): ")
@@ -98,7 +98,7 @@ def display_projects():
         print(f" {project}")
 
 
-def determine_if_complete():
+def determine_if_complete(projects):
     """Sorts complete and incomplete projects into lists"""
     complete_projects = []
     incomplete_projects = []
@@ -111,8 +111,9 @@ def determine_if_complete():
     return complete_projects, incomplete_projects
 
 
-def load_new_projects():
+def load_new_projects(projects):
     """Loads a new file of projects"""
+    projects
     projects.clear()
     new_projects = input("Filename: ")
     with open(new_projects, 'r') as in_file:
@@ -126,7 +127,7 @@ def load_new_projects():
             projects.append(Project(parts[0], parts[1], parts[2], parts[3], parts[4]))
 
 
-def load_projects():
+def load_projects(projects):
     """Loads a file of projects"""
     with open(FILENAME, 'r') as in_file:
         in_file.readline()
