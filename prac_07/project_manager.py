@@ -1,5 +1,6 @@
 """
-
+estimate: 3 hrs
+actual: 4hrs
 """
 
 from project import Project
@@ -12,6 +13,7 @@ projects = []
 
 
 def main():
+    """Program to load and update projects"""
     load_projects()
     print(MENU)
     choice = input(">>> ").lower()
@@ -37,12 +39,14 @@ def main():
 
 
 def save_ending_projects():
+    """Saves the projects"""
     with open(FILENAME, 'w') as out_file:
         for project in projects:
             print(project, file=out_file, end="\n")
 
 
 def update_project_details():
+    """Updates a projects completion and priority"""
     for i, project in enumerate(projects):
         print(f"{i} {project}")
     project_choice = int(input("Project choice: "))
@@ -54,6 +58,7 @@ def update_project_details():
 
 
 def display_projects_by_date():
+    """Displays the projects after a entered date"""
     date_string = input("Show projects that start after date (dd/mm/yyyy): ")  # e.g., "30/9/2022"
     date_string = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
     for project in projects:
@@ -63,6 +68,7 @@ def display_projects_by_date():
 
 
 def save_projects():
+    """Save the current projects to a file"""
     filename = input("Filename: ")
     with open(filename, 'w') as out_file:
         for project in projects:
@@ -71,6 +77,7 @@ def save_projects():
 
 
 def add_new_project():
+    """Adds new projects to the list"""
     project_name = get_project_details("Name: ")
     date_string = get_project_details("Start Date (d/m/yyyy): ")
     priority = int(get_project_details("Priority: "))
@@ -80,6 +87,7 @@ def add_new_project():
 
 
 def display_projects():
+    """Displays complete and Incomplete projects"""
     complete_projects, incomplete_projects = determine_if_complete()
     print("Complete Project:")
     for project in complete_projects:
@@ -91,6 +99,7 @@ def display_projects():
 
 
 def determine_if_complete():
+    """Sorts complete and incomplete projects into lists"""
     complete_projects = []
     incomplete_projects = []
     for project in projects:
@@ -103,6 +112,7 @@ def determine_if_complete():
 
 
 def load_new_projects():
+    """Loads a new file of projects"""
     projects.clear()
     new_projects = input("Filename: ")
     with open(new_projects, 'r') as in_file:
@@ -117,6 +127,7 @@ def load_new_projects():
 
 
 def load_projects():
+    """Loads a file of projects"""
     with open(FILENAME, 'r') as in_file:
         in_file.readline()
         for line in in_file:
