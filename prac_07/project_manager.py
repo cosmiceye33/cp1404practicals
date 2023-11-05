@@ -68,19 +68,19 @@ def main():
             print(f"Projects saved to {out_file}")
         elif choice == "f":
             date_string = input("Show projects that start after date (dd/mm/yyyy): ")  # e.g., "30/9/2022"
-            # watch date time video to only show project after entered date
-            date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
-            print(f"That day is/was {date.strftime('%A')}")
-            print(date.strftime("%d/%m/%Y"))
+            date_string = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+            for project in projects:
+                date = datetime.datetime.strptime(project.start_date, "%d/%m/%Y").date()
+                if date > date_string:
+                    print(project)
         elif choice == "u":
             for i, project in enumerate(projects):
                 print(f"{i} {project}")
             project_choice = int(input("Project choice: "))
             print(projects[project_choice])
             percentage = int(input("New percentage: "))
-            projects[project_choice][4] = percentage
             priority = int(input("Priority: "))
-            projects[project_choice][2] = priority
+            projects[project_choice] = Project(projects[project_choice].name, projects[project_choice].start_date, priority, projects[project_choice].cost_estimate, percentage)
         else:
             print("Invalid menu choice")
         print(MENU)
