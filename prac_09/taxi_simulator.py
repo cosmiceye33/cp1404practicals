@@ -10,4 +10,14 @@ def main():
     print("Let's Drive")
     print(MENU)
     choice = input(">>> "). lower()
+    while choice != "q":
+        if choice == "c":
+            print("Available Taxis")
+            display_taxis(taxis)
+            taxi_choice = int(input("Choose Taxi"))
+            try:
+                current_taxi = taxis[taxi_choice]
+            except IndexError:
+                print("Invalid taxi choice")
+
 
