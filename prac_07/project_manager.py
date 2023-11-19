@@ -13,7 +13,7 @@ MENU = "- (L)oad projects \n- (S)ave projects \n- (D)isplay projects \n- (F)ilte
 def main():
     """Program to load and update projects."""
     projects = []
-    load_projects()
+    load_projects(projects)
     print(MENU)
     choice = input(">>> ").lower()
     while choice != "q":
@@ -85,9 +85,9 @@ def add_new_project(projects):
     projects.append(Project(project_name, date_string, priority, cost, completion))
 
 
-def display_projects():
+def display_projects(projects):
     """Displays complete and Incomplete projects"""
-    complete_projects, incomplete_projects = determine_if_complete()
+    complete_projects, incomplete_projects = determine_if_complete(project)
     print("Complete Project:")
     for project in complete_projects:
         print(f" {project}")
