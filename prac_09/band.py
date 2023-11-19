@@ -7,14 +7,16 @@ class Band:
         self.musicians = []
 
     def __repr__(self):
-        return f"{self.name} {self.musician}"
+        for musician in self.musicians:
+            return f"{self.name} {musician}"
 
     def add(self, musician):
-        """Adds musician to musicians"""
-        return self.musicians.append(musician)
+        self.musicians.append(musician)
 
     def play(self):
         for musician in self.musicians:
-            musician.play()
-
+            if not musician.instruments:
+                return f"{musician.name} needs and instrument"
+            else:
+                return f"{musician.name} is playing {musician.instruments}"
 
