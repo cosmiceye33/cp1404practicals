@@ -1,4 +1,3 @@
-
 """
 Guitar Program
 Estimated:1h 30m
@@ -6,8 +5,11 @@ Actual:1h 3m
 """
 CURRENT_YEAR = 2023
 VINTAGE_AGE = 50
+
+
 class Guitar:
     """Guitar class"""
+
     def __init__(self, name="", year=0, cost=0):
         """Initialise a Guitar """
         self.name = name

@@ -4,7 +4,7 @@ Estimated:1h 30m
 Actual:1h 3m
 """
 
-from guitar import Guitar
+from prac_07.guitar import Guitar
 
 name = "Gibson L-5 CES"
 year = 1922
